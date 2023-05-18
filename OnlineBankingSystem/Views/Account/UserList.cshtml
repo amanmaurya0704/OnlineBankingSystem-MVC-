@@ -1,0 +1,96 @@
+﻿@model IEnumerable<OnlineBankingSystem.Models.Account>
+
+@{
+    ViewBag.Title = "UserList";
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+}
+@if (Session["Name"] != null && Session["Name"].ToString() == "Admin")
+{<h2>UserList</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Registration")
+    </p>
+    <table class="table table-bordered table-striped table-hover" align="center">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MobileNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfOpening)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MobileNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfOpening)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.AccountID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.AccountID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.AccountID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    }
+
+else
+{
+    Response.Redirect("~/Account/Login");
+}
+}

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<OnlineBankingSystem.Models.Transaction>
+
+@{
+    ViewBag.Title = "Debit";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@if (Session["AccountID"] != null)
+{
+
+    <h2>Debit</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table table-bordered table-striped table-hover" align="center">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SenderAccountID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReceiverAccountID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MobileNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TransactionType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remark)
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SenderAccountID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReceiverAccountID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MobileNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransactionType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Remark)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Account.AccountNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Account1.AccountNo)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+    <div>
+        @Html.ActionLink("Back", "HomePage", "Transaction")
+    </div>
+}
+else
+{
+    @Html.ActionLink("Login to view this page", "Login", "Account");
+}

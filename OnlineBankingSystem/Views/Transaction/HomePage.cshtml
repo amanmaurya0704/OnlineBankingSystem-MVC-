@@ -1,0 +1,57 @@
+﻿@model OnlineBankingSystem.Models.Customer
+@{
+    ViewBag.Title = "HomePage";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@if (Session["AccountID"] != null)
+{
+    
+    <h4>Hi,@Session["Name"].ToString()</h4>
+    <h2 align="center">HomePage<</h2>
+    <table class="table table-bordered table-striped table-hover" align="center">
+        <tr>
+            <td>
+                Account BALANCE
+            </td>
+            <td>
+                @Session["Balance"].ToString()
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Perform Transaction
+            </td>
+            <td>
+                @Html.ActionLink("Click Here", "PerformTransaction")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Credit List
+            </td>
+            <td>
+                @Html.ActionLink("Click Here", "Credit")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Debit List
+            </td>
+            <td>
+                @Html.ActionLink("Click Here", "Debit")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Reset Password
+            </td>
+            <td>
+                @Html.ActionLink("Click Here", "ResetPassword", "Account")
+            </td>
+        </tr>
+    </table>
+}
+else
+{
+    @Html.ActionLink("Login to view this page", "Login", "Account");
+}

@@ -1,0 +1,143 @@
+﻿@model OnlineBankingSystem.Models.Customer
+@using OnlineBankingSystem.Models
+
+
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+
+
+}
+
+@if (Session["Name"] != null && Session["Name"].ToString() == "Admin")
+{<h2 align="center">Registration</h2>
+
+    <form name="Registration" action="/Account/Registration" method="post">
+        <div class="text-danger" align="center">
+            @ViewBag.Message
+        </div>
+        <table align="center">
+            <tr width="200px">
+                <td>
+                    @Html.LabelFor(m => m.AccountNo)
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.AccountNo)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.AccountNo, "", new { @class = "error" })
+                </td>
+            </tr>
+            <tr height=20px> </tr>
+            <tr width="200px">
+                <td>
+                    @Html.LabelFor(m => m.AccountType)
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.AccountType,
+         new SelectList(Enum.GetValues(typeof(Account_Type))),
+         "Select Account Type")
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.AccountType, "", new { @class = "error" })
+                </td>
+            </tr>
+            <tr height=20px> </tr>
+            <tr width="200px">
+                <td>
+                    @Html.LabelFor(m => m.Name)
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Name)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "error" })
+                </td>
+            </tr>
+            <tr height=20px> </tr>
+            <tr width="200px">
+                <td>
+                    @Html.LabelFor(m => m.Gender)
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.Gender,
+         new SelectList(Enum.GetValues(typeof(Customer_Gender))),
+         "Select Gender")
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "error" })
+                </td>
+            </tr>
+            <tr height=20px> </tr>
+            <tr width="200px">
+                <td>
+                    @Html.LabelFor(m => m.Email)
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Email)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "error" })
+                </td>
+            </tr>
+            <tr height=20px> </tr>
+            <tr width="200px">
+                <td>
+                    @Html.LabelFor(m => m.MobileNo)
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.MobileNo)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.MobileNo, "", new { @class = "error" })
+                </td>
+            </tr>
+            <tr height=20px> </tr>
+            <tr width="200px">
+                <td>
+                    @Html.LabelFor(m => m.Address)
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Address)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.Address, "", new { @class = "error" })
+                </td>
+            </tr>
+            <tr height=20px> </tr>
+            <tr width="200px">
+                <td>
+                    @Html.LabelFor(m => m.Amount)
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Amount)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.Amount, "", new { @class = "error" })
+                </td>
+            </tr>
+            <tr height=20px> </tr>
+            <tr width="200px">
+                <td>
+                    @Html.LabelFor(m => m.Password)
+                </td>
+                <td>
+                    @Html.PasswordFor(m => m.Password)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "error" })
+                </td>
+            </tr>
+            <tr height=20px> </tr>
+            <tr>
+                <td>
+                    <input type="submit" id="btnRegister" name="btnRegister" value="Register" />
+                </td>
+            </tr>
+        </table>
+    </form>
+}
+else
+{
+    @Html.ActionLink("Login to view this page", "Login", "Account");
+}

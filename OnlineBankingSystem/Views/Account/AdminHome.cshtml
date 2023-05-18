@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "AdminHome";
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+}
+@if (Session["Name"].ToString() == "Admin")
+{<h2 align="center">AdminHome</h2>
+
+    <br />
+
+    <table class="table table-bordered table-striped table-hover" align="center">
+        <tr>
+            <td>@Html.Label("Register New Account")</td>
+
+            <td>@Html.ActionLink("Click Here", "Registration")</td>
+
+        </tr>
+        <tr>
+            <td> @Html.Label("List Of Accounts")</td>
+
+            <td>@Html.ActionLink("Click Here", "UserList")</td>
+
+        </tr>
+    </table>
+}
+else
+{
+    Response.Redirect("~/Account/Login");
+}
